@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['Não Pago', 'Pago'],
                 datasets: [{
                   data: [unpaidExpenses.reduce((a, b) => a + b, 0), paidExpenses.reduce((a, b) => a + b, 0)],
-                  backgroundColor: ['#ed0536', '#36A2EB']
+                  backgroundColor: ['#FF6384', '#36A2EB']
                 }]
               }
             });
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                   label: 'Valor da Despesa',
                   data: expenses.map(expense => expense.value),
-                  backgroundColor: expenses.map(expense => expense.paid ? '#36A2EB' : '#ed0536')
+                  backgroundColor: expenses.map(expense => expense.paid ? '#36A2EB' : '#FF6384')
                 }]
               }
             });
