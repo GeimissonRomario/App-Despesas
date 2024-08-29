@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                   label: 'Valor da Despesa',
                   data: expenses.map(expense => expense.value),
-                  backgroundColor: expenses.map(expense => expense.paid ? '#36A2EB' : '#FF6384')
+                  backgroundColor: expenses.map(expense => expense.paid ? '#36A2EB' : '#ed0536')
                 }]
               }
             });
