@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['Não Pago', 'Pago'],
                 datasets: [{
                   data: [unpaidExpenses.reduce((a, b) => a + b, 0), paidExpenses.reduce((a, b) => a + b, 0)],
-                  backgroundColor: ['#FF6384', '#36A2EB']
+                  backgroundColor: ['#ed0536', '#36A2EB']
                 }]
               }
             });
