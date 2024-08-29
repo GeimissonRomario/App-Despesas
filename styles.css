@@ -123,3 +123,20 @@
     background-color: #218838;
   }
   
+  ul li .icon {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  ul li .icon-edit {
+    color: #007bff;
+  }
+  
+  ul li .icon-delete {
+    color: #dc3545;
+  }
+  
+  ul li .icon:hover {
+    opacity: 0.7;
+  }
+  
