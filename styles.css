@@ -1,0 +1,38 @@
+/* Mesma estrutura do código anterior, mantendo o design limpo e responsivo */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li span {
+    display: inline-block;
+    width: 10%;
+  }
+  
+  .edit-btn, .delete-btn {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #ec971f;
+  }
+  
+  .delete-btn {
+    background-color: #d9534f;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c9302c;
+  }
+  
+ 
+  
