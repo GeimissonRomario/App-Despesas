@@ -1,42 +1,40 @@
-# Controle de Despesas
+Controle de Despesas
+Descrição
+O Controle de Despesas é um aplicativo web desenvolvido para gerenciar suas finanças pessoais. Ele permite que você adicione, edite e exclua despesas, visualize gráficos detalhados dos seus gastos, exporte os dados e muito mais. Este app é ideal para controlar o seu orçamento e acompanhar suas despesas ao longo do tempo.
 
-Um aplicativo web para controle de despesas pessoais. Permite adicionar, editar e excluir despesas, visualizar gráficos, exportar dados e muito mais. Ideal para gerenciar seu orçamento e acompanhar seus gastos.
+Funcionalidades
+Adicionar Despesas: Insira a descrição, o valor da despesa, e marque se é uma despesa recorrente.
+Editar e Excluir Despesas: Modifique ou remova despesas existentes usando os ícones de edição e exclusão.
+Visualização de Despesas: Marque despesas como pagas ou não pagas, com exibição clara de quanto foi pago e quanto resta a pagar.
+Gráficos Dinâmicos: Utilize gráficos de pizza e barras para visualizar suas despesas com cores únicas para cada uma, facilitando a análise.
+Histórico de Despesas: Filtre despesas por períodos como semana, mês ou ano, e visualize o histórico completo de transações.
+Exportar Dados: Exporte suas despesas em formatos CSV e PDF para análise ou backup.
+Despesas Recorrentes: Crie despesas que se repetem automaticamente em intervalos definidos, como mensal ou semanalmente.
+Tecnologias Usadas
+HTML
+CSS
+JavaScript
+Chart.js: Utilizado para renderizar gráficos interativos (pizza e barra).
+jsPDF: Usado para exportar o histórico de despesas em formato PDF.
+PapaParse: Usado para exportação dos dados em formato CSV.
+Instalação
+Clone o repositório em sua máquina local:
 
-## Funcionalidades
+bash
+Copy code
+git clone https://github.com/seu-usuario/controle-despesas.git
+Navegue até o diretório do projeto:
 
-- **Adicionar Despesas**: Insira a descrição e o valor da despesa, e marque se é uma despesa recorrente.
-- **Editar e Excluir Despesas**: Modifique ou remova despesas existentes.
-- **Visualização de Despesas**: Marque despesas como pagas e não pagas.
-- **Gráficos**: Visualize suas despesas com gráficos de pizza e barras.
-- **Histórico de Despesas**: Filtre despesas por período (semana, mês, ano) e visualize o histórico completo.
-- **Exportar Dados**: Exporte suas despesas em formatos CSV e PDF.
-- **Despesas Recorrentes**: Adicione despesas que se repetem automaticamente.
+bash
+Copy code
+cd controle-despesas
+Abra o arquivo index.html em seu navegador para visualizar o aplicativo.
 
-## Tecnologias Usadas
-
-- HTML
-- CSS
-- JavaScript
-- Chart.js (para gráficos)
-- jsPDF (para exportação em PDF)
-- PapaParse (para exportação em CSV)
-
-## Instalação
-
-1. **Clone o repositório:**
-
-   ```bash
-   git clone https://github.com/seu-usuario/controle-despesas.git
-
-
-### Instruções para Uso
-
-- **Clone o repositório**: Isso faz uma cópia local do projeto.
-- **Navegue até o diretório**: Altere para o diretório onde o projeto está localizado.
-- **Abra o arquivo `index.html`**: Isso permite que você visualize o app em seu navegador.
-
-### Nota
-
-Certifique-se de substituir os placeholders como `https://github.com/seu-usuario/controle-despesas.git` e `[seu-email@dominio.com](mailto:seu-email@dominio.com)` com as informações reais relacionadas ao seu projeto.
-
-Você pode ajustar o conteúdo conforme necessário, adicionando mais detalhes ou instruções específicas para o seu projeto.
+Instruções para Uso
+Após abrir o app, adicione suas despesas preenchendo os campos de descrição e valor, e marcando se são recorrentes.
+Marque despesas como pagas ou não pagas utilizando a checkbox ao lado de cada despesa.
+Edite ou exclua despesas clicando nos ícones de lápis (edição) ou lixeira (exclusão).
+Acompanhe seus gastos visualmente através dos gráficos de pizza e barras, atualizados automaticamente conforme você adiciona ou modifica despesas.
+Exporte suas despesas para CSV ou PDF a qualquer momento clicando nos botões correspondentes.
+Contribuição
+Contribuições são bem-vindas! Se você quiser sugerir novas funcionalidades ou reportar bugs, fique à vontade para abrir uma issue ou enviar um pull request.
