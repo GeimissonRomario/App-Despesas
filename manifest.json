@@ -1,6 +1,6 @@
 {
     "short_name": "Controle Despesas",
-    "name": "Controle de Despesas Pessoal",
+    "name": "Despesas Pessoal",
     "description": "Um aplicativo web para controlar suas despesas pessoais.",
     "start_url": "/",
     "display": "standalone",
