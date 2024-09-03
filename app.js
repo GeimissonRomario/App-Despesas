@@ -4,25 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalUnpaidSpan = document.getElementById('total-unpaid');
   const totalPaidSpan = document.getElementById('total-paid');
   const filterPeriod = document.getElementById('filter-period');
-  const toggleExpenseListBtn = document.getElementById('toggle-expense-list');
-  const expenseListContainer = document.getElementById('expense-list-container');
   
   let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
   let colors = JSON.parse(localStorage.getItem('colors')) || [];
 
-  // Inicializa a UI e os gráficos
+  // Atualiza a UI e os gráficos
   updateUI();
-
-  // Alterna a exibição da lista de despesas
-  toggleExpenseListBtn.addEventListener('click', () => {
-    if (expenseListContainer.style.display === 'none') {
-      expenseListContainer.style.display = 'block';
-      toggleExpenseListBtn.textContent = 'Ocultar Despesas';
-    } else {
-      expenseListContainer.style.display = 'none';
-      toggleExpenseListBtn.textContent = 'Despesas';
-    }
-  });
 
   expenseForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -78,8 +65,42 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharts();
   }
 
-  // Funções de toggle, edição, exclusão e exportação (sem alterações)
-  // ...
+  function togglePaid(e) {
+    const index = e.target.dataset.index;
+    expenses[index].paid = e.target.checked;
+    
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    updateUI();
+  }
+
+  function editExpense(e) {
+    const index = e.target.dataset.index;
+    const expense = expenses[index];
+    
+    const newDesc = prompt('Editar descrição', expense.desc);
+    const newValue = parseFloat(prompt('Editar valor', expense.value));
+
+    if (newDesc !== null && newValue !== null && !isNaN(newValue)) {
+      expenses[index].desc = newDesc;
+      expenses[index].value = newValue;
+      localStorage.setItem('expenses', JSON.stringify(expenses));
+      updateUI();
+    }
+  }
+
+  function deleteExpense(e) {
+    const index = e.target.dataset.index;
+    expenses.splice(index, 1);
+    colors.splice(index, 1); // Remove a cor correspondente
+    
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    localStorage.setItem('colors', JSON.stringify(colors));
+    updateUI();
+  }
+
+  filterPeriod.addEventListener('change', () => {
+    updateUI();
+  });
 
   function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -90,9 +111,77 @@ document.addEventListener('DOMContentLoaded', () => {
     return color;
   }
 
-  // Funções de gráficos, exportação e inicialização do Service Worker (sem alterações)
-  // ...
-  
+  function updateCharts() {
+    const labels = expenses.map(expense => expense.desc);
+    const data = expenses.map(expense => expense.value);
+    const chartColors = expenses.map(expense => expense.color);
+
+    const pieCtx = document.getElementById('pie-chart').getContext('2d');
+    const barCtx = document.getElementById('bar-chart').getContext('2d');
+
+    if (window.pieChart) window.pieChart.destroy();
+    if (window.barChart) window.barChart.destroy();
+
+    window.pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: chartColors
+        }]
+      }
+    });
+
+    window.barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Valor da Despesa',
+          data: data,
+          backgroundColor: chartColors
+        }]
+      }
+    });
+  }
+
+  // Export CSV
+  document.getElementById('export-csv').addEventListener('click', () => {
+    const csvRows = [
+      ['Descrição', 'Valor', 'Pago?', 'Data'],
+      ...expenses.map(expense => [
+        expense.desc, 
+        expense.value.toFixed(2), 
+        expense.paid ? 'Sim' : 'Não', 
+        new Date(expense.date).toLocaleDateString()
+      ])
+    ];
+
+    const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.join(",")).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'despesas.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+  // Export PDF
+  document.getElementById('export-pdf').addEventListener('click', () => {
+    const doc = new jsPDF();
+    doc.text("Histórico de Despesas", 20, 20);
+
+    let y = 30;
+    expenses.forEach(expense => {
+      doc.text(`${expense.desc} - R$${expense.value.toFixed(2)} - Pago: ${expense.paid ? 'Sim' : 'Não'} - Data: ${new Date(expense.date).toLocaleDateString()}`, 20, y);
+      y += 10;
+    });
+
+    doc.save('despesas.pdf');
+  });
+
   // Inicializa UI
   updateUI();
 });
