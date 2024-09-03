@@ -27,13 +27,17 @@
       <button type="submit">Adicionar Despesa</button>
     </form>
 
-    <h2>Despesas</h2>
-    <ul id="expense-list"></ul>
+    <button id="toggle-expense-list">Despesas</button>
 
-    <div>
-      <span>Total Não Pago: R$ <span id="total-unpaid">0.00</span></span>
-      <br>
-      <span>Total Pago: R$ <span id="total-paid">0.00</span></span>
+    <div id="expense-list-container" style="display: none;">
+      <h2>Despesas</h2>
+      <ul id="expense-list"></ul>
+
+      <div>
+        <span>Total Não Pago: R$ <span id="total-unpaid">0.00</span></span>
+        <br>
+        <span>Total Pago: R$ <span id="total-paid">0.00</span></span>
+      </div>
     </div>
 
     <h2>Gráficos</h2>
@@ -68,5 +72,3 @@
   </script>
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-
